@@ -1,0 +1,27 @@
+<h1>Listing characters</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Class</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @characters.each do |character| %>
+  <tr>
+    <td><%= character.first_name %></td>
+    <td><%= character.last_name %></td>
+    <td><%= character.character_class %></td>
+    <td><%= link_to 'Show', user_character_path(current_user, character) %></td>
+    <td><%= link_to 'Edit', edit_user_character_path(current_user, character) %></td>
+    <td><%= link_to 'Destroy', [current_user, character], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Character', new_user_character_path(current_user) %>
