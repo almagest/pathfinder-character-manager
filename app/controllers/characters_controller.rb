@@ -34,7 +34,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.characters.new(params[:character])
+    @character = current_user.characters.new(character_params)
 
     respond_to do |format|
       if @character.save
@@ -51,7 +51,7 @@ class CharactersController < ApplicationController
     @character = current_user.characters.find_by_permalink(params[:id])
 
     respond_to do |format|
-      if @character.update_attributes(params[:character])
+      if @character.update_attributes(character_params)
         format.html { redirect_to [current_user, @character], notice: 'Character was successfully updated.' }
         format.json { head :ok }
       else
@@ -70,4 +70,11 @@ class CharactersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+  
+  def character_params
+    params.require(:character).permit!
+  end
 end
+
