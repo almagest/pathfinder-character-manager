@@ -5,7 +5,7 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'mysql2'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
 
 # Gems used only for assets and not required
@@ -24,12 +24,11 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
-group :development do
+group :development, :test do
   gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'fabrication'
   # Pretty printed test output
   gem 'turn', :require => false

@@ -14,11 +14,11 @@ describe CharactersController do |variable|
   context "with valid user" do
     before :each do
       log_in_test_user
-      character_attrs = Fabricate.attributes_for(:character)
+      @character_attrs = Fabricate.attributes_for(:character)
     end
 
     it "redirects and displays success message on create" do
-      post :create, :user_id => @user, :character => character_attrs
+      post :create, :user_id => @user, :character => @character_attrs
       response.should be_redirect
       flash[:notice].should == 'Character was successfully created.'
     end
